@@ -178,13 +178,19 @@ La web se empaqueta con [Capacitor](https://capacitorjs.com/). La app Android a�
 
 ### Android
 
-Requisitos: Android Studio, SDK de Android y un JDK compatible.
+La carpeta `android/` ya está incluida en el repositorio. Requisitos: Android Studio, SDK 36 y JDK 17 o superior.
 
 ```bash
 npm run build
-npx cap add android
 npx cap sync android
 npx cap open android
+```
+
+Si empiezas desde cero o borraste la carpeta, añade la plataforma antes de sincronizar:
+
+```bash
+npx cap add android
+npx cap sync android
 ```
 
 En el dispositivo, acepta los permisos de **Bluetooth** y **dispositivos cercanos**. Si el adaptador no aparece por BLE, empareja el ELM327 desde los ajustes de Bluetooth de Android y usa el modo **Bluetooth clásico (SPP)**.
@@ -257,6 +263,7 @@ src/
   data/                   # PIDs, DTC, vehículos, notas, guías, VIN e iFixit
 worker/
   src/index.ts            # Proxy de Gemini en Cloudflare Workers
+android/                  # Proyecto Android con BLE nativo y SPP
 scripts/postbuild.mjs     # 404.html para GitHub Pages
 .github/workflows/        # CI y despliegue en Pages
 ```

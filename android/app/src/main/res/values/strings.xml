@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">OBD COOL</string>
+    <string name="title_activity_main">OBD COOL</string>
+    <string name="package_name">com.obdcool.app</string>
+    <string name="custom_url_scheme">com.obdcool.app</string>
+</resources>
