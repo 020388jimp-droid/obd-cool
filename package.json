@@ -1,0 +1,55 @@
+{
+  "name": "obd-cool",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Diagnóstico automotriz OBD-II con ELM327, lectura de códigos, sensores en vivo, IA opcional y enlaces a iFixit.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && node scripts/postbuild.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "typecheck:worker": "tsc -p worker/tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run typecheck:worker && npm run test && vite build",
+    "lint": "oxlint",
+    "pwa:assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg",
+    "worker:dev": "wrangler dev",
+    "worker:deploy": "wrangler deploy",
+    "cap:sync": "npx cap sync",
+    "cap:android": "npx cap add android",
+    "cap:ios": "npx cap add ios",
+    "android:open": "npx cap open android"
+  },
+  "dependencies": {
+    "@ascentio-it/capacitor-bluetooth-serial": "^8.0.1",
+    "@capacitor-community/bluetooth-le": "^8.3.0",
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/ios": "^8.6.0",
+    "lucide-react": "^1.68.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261104.1",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/web-bluetooth": "^0.0.22",
+    "@vite-pwa/assets-generator": "^2.0.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.89.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.0",
+    "wrangler": "^4.157.0"
+  }
+}

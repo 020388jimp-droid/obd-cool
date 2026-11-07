@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Typecheck, pruebas y build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar TypeScript del frontend
+        run: npm run typecheck
+
+      - name: Comprobar TypeScript del Worker
+        run: npm run typecheck:worker
+
+      - name: Ejecutar pruebas
+        run: npm test
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build de producción
+        run: npm run build
