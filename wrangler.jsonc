@@ -8,7 +8,8 @@
   },
   "vars": {
     "GEMINI_MODEL": "gemini-2.5-flash",
-    "ALLOWED_ORIGINS": "*",
+    // Cambia este valor si publicas la app en otro dominio.
+    "ALLOWED_ORIGINS": "https://020388jimp-droid.github.io,http://localhost:5173,http://127.0.0.1:5173",
     "RATE_LIMIT_PER_MINUTE": "12"
   }
 }

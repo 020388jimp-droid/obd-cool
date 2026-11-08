@@ -78,6 +78,7 @@ El simulador representa un Toyota Corolla 2005 con los códigos `P0300`, `P0171`
 | `npm run cap:sync` | Sincroniza el build con los proyectos nativos. |
 | `npm run cap:android` | Añade la plataforma Android. |
 | `npm run android:open` | Abre el proyecto en Android Studio. |
+| `npm run android:assets` | Regenera iconos y splashes de Android desde `public/logo.svg`. |
 
 ---
 
@@ -124,7 +125,7 @@ El frontend llama a un Worker que guarda la clave de Gemini y aplica CORS, valid
    npx wrangler secret put GEMINI_API_KEY
    ```
 
-4. Ajusta `ALLOWED_ORIGINS` en `wrangler.jsonc` con tu origen real, por ejemplo:
+4. Revisa `ALLOWED_ORIGINS` en `wrangler.jsonc`. Ya incluye el dominio de este repositorio y `localhost`; si publicas en otro dominio, añádelo:
 
    ```jsonc
    "ALLOWED_ORIGINS": "https://tu-usuario.github.io,http://localhost:5173"
@@ -194,6 +195,23 @@ npx cap sync android
 ```
 
 En el dispositivo, acepta los permisos de **Bluetooth** y **dispositivos cercanos**. Si el adaptador no aparece por BLE, empareja el ELM327 desde los ajustes de Bluetooth de Android y usa el modo **Bluetooth clásico (SPP)**.
+
+Para generar un APK de depuración desde la terminal (sin Android Studio):
+
+```bash
+cd android
+./gradlew :app:assembleDebug
+```
+
+En Windows con PowerShell:
+
+```powershell
+$env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
+$env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
+.\gradlew.bat :app:assembleDebug
+```
+
+El APK queda en `android/app/build/outputs/apk/debug/app-debug.apk`. Los iconos y las pantallas de arranque se regeneran con `npm run android:assets`.
 
 ### iOS
 
