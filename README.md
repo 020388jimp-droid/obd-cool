@@ -159,6 +159,7 @@ El repositorio incluye dos workflows:
 
 - `.github/workflows/ci.yml`: typecheck, pruebas, lint y build en cada push y pull request.
 - `.github/workflows/pages.yml`: publica `dist/` en GitHub Pages al hacer push a `main`.
+- `.github/workflows/android.yml`: compila un APK de depuración y lo publica como artefacto descargable.
 
 Pasos:
 
@@ -212,6 +213,8 @@ $env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
 ```
 
 El APK queda en `android/app/build/outputs/apk/debug/app-debug.apk`. Los iconos y las pantallas de arranque se regeneran con `npm run android:assets`.
+
+Cada push que toque el código genera además un APK en GitHub Actions: abre la pestaña **Actions → Android → APK de depuración** y descarga el artefacto `obd-cool-android-debug`. Es una compilación de depuración pensada para probar, no para publicar en Google Play.
 
 ### iOS
 
